@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <CheckBox fx:id="myCheckBox" layoutX="148.0" layoutY="286.0" mnemonicParsing="false" onAction="#change" text="ON/OFF">
+      <DatePicker fx:id="myDatePicker" layoutX="107.0" layoutY="158.0" onAction="#getDate" />
+      <Label fx:id="myLabel" alignment="CENTER" layoutX="121.0" layoutY="91.0" prefHeight="17.0" prefWidth="145.0" text="Pick a date">
          <font>
-            <Font size="17.0" />
-         </font>
-      </CheckBox>
-      <Label fx:id="myLabel" layoutX="177.0" layoutY="185.0" text="OFF">
-         <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
       </Label>
    </children>
