@@ -3,33 +3,34 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     @FXML
-    AnchorPane myPane;
+    private Label myLabel;
 
     @FXML
-    ColorPicker myColorPicker;
+    private ChoiceBox<String> myChoiceBox;
 
-    public void changeColor(ActionEvent e){
-        Color myColor = myColorPicker.getValue();
-        myPane.setBackground(new Background(new BackgroundFill(myColor, CornerRadii.EMPTY, Insets.EMPTY)));
+    private String[] food = {"pizza","sushi","burger"};
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {//Bu controller'a sahip view gösterildiğinde bu da çalışır
+
+        myChoiceBox.getItems().addAll(food);//choiceBox'a verileri dizi aracılığıyla veriyoruz
+
+        myChoiceBox.setOnAction(this::getFood); //choiceBox'ta seçim yapılınca getFood metodunu çağır
     }
 
-
-
-
-
-
-
-
+    public void getFood(ActionEvent e){
+        String myFood = myChoiceBox.getValue();
+        myLabel.setText("Your choice is: " + myFood);
+    }
 }
