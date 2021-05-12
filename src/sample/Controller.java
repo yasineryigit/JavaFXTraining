@@ -1,26 +1,41 @@
 package sample;
 
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+
 
 
 public class Controller {
 
     @FXML
-    ImageView myImageView;
-    Button myButton;
+    private Label myLabel;
+    @FXML
+    private TextField textFieldAge;
+    @FXML
+    private Button buttonSubmit;
 
-    Image image1  = new Image(getClass().getResourceAsStream("hulk1.jpg"));
-    Image image2  = new Image(getClass().getResourceAsStream("hulk2.jpg"));
+    int age;
 
-    public void displayImage(){
-        if(myImageView.getImage()!=image1){
-            myImageView.setImage(image1);
-        }else{
-            myImageView.setImage(image2);
+    public void submit(ActionEvent event) {
+        try{
+            age = Integer.parseInt(textFieldAge.getText());
+
+            if(age>=18){
+                myLabel.setText("You are now signed up!");
+            }else{
+                myLabel.setText("You must be 18+");
+            }
+        }
+        catch (NumberFormatException e){
+            myLabel.setText("Enter only number please");
+        }
+        catch (Exception e){
+            myLabel.setText("Error: " + e.toString());
         }
 
     }
