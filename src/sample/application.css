@@ -1,0 +1,17 @@
+.root{
+    -fx-background-color: "black";
+}
+
+
+.label{
+    -fx-font-size: 20;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+#labelTitle{
+    -fx-font-size: 60;
+    -fx-font-family: "007 GoldenEye";
+
+}
