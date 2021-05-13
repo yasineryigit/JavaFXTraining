@@ -17,9 +17,20 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    public void newMethod(){
-        System.out.println("You selected the new menu item");
+    public void moveUp(){
+        System.out.println("MOVING UP");
     }
+    public void moveDown(){
+        System.out.println("MOVING DOWN");
+    }
+    public void moveLeft(){
+        System.out.println("MOVING LEFT");
+    }
+    public void moveRight(){
+        System.out.println("MOVING RIGHT");
+    }
+
+
 
 
 }
