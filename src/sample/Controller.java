@@ -3,50 +3,39 @@ package sample;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.ListView;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     @FXML
-    private Spinner<Integer> mySpinner;
+    private ListView<String> myListView;
 
     @FXML
     private Label myLabel;
 
-    int currentValue;
+    String[] food = {"pizza", "sushi", "burger"};
+
+    String currentFood;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10); //1 den 10 a kadar elemanları dizecek
+        myListView.getItems().addAll(food); //listView'a verileri string dizisi olarak veriyoruz
 
-        valueFactory.setValue(1);
-        mySpinner.setValueFactory(valueFactory);
-        currentValue=mySpinner.getValue();
-
-        myLabel.setText(Integer.toString(currentValue));
-
-        mySpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                currentFood = myListView.getSelectionModel().getSelectedItem();
 
-                currentValue=mySpinner.getValue();
-
-                myLabel.setText(Integer.toString(currentValue));
-
+                myLabel.setText(currentFood);
             }
         });
     }
-
 
 }
