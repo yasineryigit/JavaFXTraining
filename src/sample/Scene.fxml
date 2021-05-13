@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="myPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <ChoiceBox fx:id="myChoiceBox" layoutX="119.0" layoutY="188.0" prefWidth="150.0" />
-      <Label fx:id="myLabel" alignment="CENTER" layoutX="3.0" layoutY="93.0" prefHeight="25.0" prefWidth="382.0" text="Select what you want to eat">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
+      <Slider fx:id="mySlider" layoutX="187.0" layoutY="36.0" majorTickUnit="10.0" minorTickCount="10" orientation="VERTICAL" prefHeight="349.0" prefWidth="26.0" showTickLabels="true" showTickMarks="true" value="50.0" />
+      <Label fx:id="myLabel" layoutX="296.0" layoutY="197.0" prefHeight="27.0" prefWidth="35.0" text="Label" />
    </children>
 </AnchorPane>

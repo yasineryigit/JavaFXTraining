@@ -1,11 +1,12 @@
 package sample;
 
 
-import javafx.event.ActionEvent;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,21 +17,20 @@ public class Controller implements Initializable {
     private Label myLabel;
 
     @FXML
-    private ChoiceBox<String> myChoiceBox;
+    private Slider mySlider;
 
-    private String[] food = {"pizza","sushi","burger"};
+    int myTemperature;
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {//Bu controller'a sahip view gösterildiğinde bu da çalışır
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        myChoiceBox.getItems().addAll(food);//choiceBox'a verileri dizi aracılığıyla veriyoruz
-
-        myChoiceBox.setOnAction(this::getFood); //choiceBox'ta seçim yapılınca getFood metodunu çağır
-    }
-
-    public void getFood(ActionEvent e){
-        String myFood = myChoiceBox.getValue();
-        myLabel.setText("Your choice is: " + myFood);
+        mySlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                myTemperature = (int)mySlider.getValue();
+                myLabel.setText(String.valueOf(myTemperature));
+            }
+        });
     }
 }
