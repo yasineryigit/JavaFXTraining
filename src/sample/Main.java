@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ public class Main extends Application {
         FXMLLoader loader = new  FXMLLoader(getClass().getResource("Scene.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Mp3 Player");
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -44,6 +45,8 @@ public class Main extends Application {
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             //kapatmak istediğimiz stage'i alacağız
+            Platform.exit();
+            System.exit(0);
             stage.close();
         }
     }
