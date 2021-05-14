@@ -5,65 +5,45 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     @FXML
-    private ImageView imageView;
+    private MediaView mediaView;
+
+    private File file;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*
-        //translate
-        TranslateTransition translate = new TranslateTransition();
-        translate.setNode(imageView);
-        translate.setDuration(Duration.millis(1000));
-        translate.setCycleCount(TranslateTransition.INDEFINITE);
-        translate.setByX(250);
-        translate.setByY(-250);
-        translate.setAutoReverse(true);
-        translate.play();
 
-        //rotate
-        RotateTransition rotate = new RotateTransition();
-        rotate.setNode(imageView);
-        rotate.setDuration(Duration.millis(1000));
-        rotate.setCycleCount(TranslateTransition.INDEFINITE);
-        rotate.setInterpolator(Interpolator.LINEAR);
-        rotate.setByAngle(360);
-        rotate.setAxis(Rotate.Z_AXIS);
-        rotate.play();
+        file = new File("video.mp4");
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+    }
 
+    public void playVideo(){
+        mediaPlayer.play();
+    }
 
-        //FADE
-        FadeTransition fade = new FadeTransition();
-        fade.setNode(imageView);
-        fade.setDuration(Duration.millis(1000));
-        fade.setCycleCount(TranslateTransition.INDEFINITE);
-        fade.setInterpolator(Interpolator.LINEAR);
-        fade.setFromValue(1);
-        fade.setToValue(0);
-        fade.play();*/
+    public void pauseVideo(){
+        mediaPlayer.pause();
+    }
 
-        //scale
-        ScaleTransition scale = new ScaleTransition();
-        scale.setNode(imageView);
-        scale.setDuration(Duration.millis(1000));
-        scale.setCycleCount(TranslateTransition.INDEFINITE);
-        scale.setInterpolator(Interpolator.LINEAR);
-        scale.setByX(2.0);
-        scale.setByY(2.0);
-        scale.setAutoReverse(true);
-        scale.play();
-
-
-
+    public void stopVideo(){
+        mediaPlayer.stop();
     }
 
 
